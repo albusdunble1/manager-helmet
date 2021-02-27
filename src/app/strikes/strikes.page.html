@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Strikes List
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item-group *ngFor="let strikeCountGroup of loadedWorkers2" >
+    <ion-item-divider>
+        {{ strikeCountGroup.strikeCount }} {{ strikeCountGroup.strikeCount > 1? 'Strikes': 'Strike' }}
+    </ion-item-divider>
+    <ion-grid>
+      <ion-row *ngFor="let worker of strikeCountGroup.workers">
+        <ion-col>
+          <ion-card class="ion-no-margin">
+            <ion-item lines="none" routerLink="/tabs/strikes/{{ worker.id }}" detail>
+              <ion-label>
+                <p>{{ worker.name }}</p>
+              </ion-label>
+            </ion-item>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-item-group>
+</ion-content>

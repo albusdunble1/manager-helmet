@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/strikes"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Strikes Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-item>
+      <ion-label>
+        <h1>{{ loadedWorker?.name }}</h1>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+
+  <ion-list>
+    <ion-card *ngFor="let strike of loadedStrikes">
+      <ion-card-content>
+        <ion-text color="dark">
+          <h2><b>Strike ID: {{ strike.id }}</b></h2>
+          <p *ngIf="strike.status === 'active'"><span class="active">Active</span></p>
+          <p *ngIf="strike.status === 'resolved'"><span class="inactive">Resolved</span></p>
+        </ion-text>
+        <ion-img [src]='strike.detection.frameUrl'></ion-img>
+        <br>
+        <ion-label>
+          <h3><b>Description</b></h3>
+          <p>{{ strike.description }}</p>
+        </ion-label>
+        <br>
+        <div class="ion-text-center" *ngIf="strike.status === 'active'">
+          <ion-button color="danger" (click)="onResolve(strike.id)">Resolve</ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

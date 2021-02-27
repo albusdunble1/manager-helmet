@@ -1,0 +1,32 @@
+h2{
+  padding-bottom: 10px;
+}
+
+span{
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.active {
+  background-color: red;
+  color: white;
+}
+
+.inactive {
+  background-color: #00b5ff;
+  color: white;
+}
+
+p{
+  padding-bottom: 5px;
+}
+
+ion-card {
+  margin-bottom: 20px;
+}

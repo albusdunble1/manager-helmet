@@ -1,0 +1,7 @@
+{
+  "name": "psm-manager",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
