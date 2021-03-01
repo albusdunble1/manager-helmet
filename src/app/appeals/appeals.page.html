@@ -4,15 +4,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-button color="primary" (click)="onQueryUpdate()">Test Update</ion-button>
+<ion-content class="ion-padding">
+  <!-- <ion-button color="primary" (click)="onQueryUpdate()">Test Update</ion-button>
   <ion-list>
     <ion-item *ngFor="let worker of loadedWorkers">
       <ion-label>
         <p>{{ worker.name }}</p>
-        <!-- <p>{{ worker.phone }}</p>
+        <p>{{ worker.phone }}</p>
         <p>{{ worker.address }}</p>
-        <p>{{ worker.dob.toDate() }}</p> -->
+        <p>{{ worker.dob.toDate() }}</p>
       </ion-label>
 
     </ion-item>
@@ -22,5 +22,44 @@
     <ion-item *ngFor="let detection of loadedDetections">
       <ion-img [src]="detection.frameUrl"></ion-img>
     </ion-item>
+  </ion-list> -->
+
+
+
+  <ion-list>
+    <ion-card *ngFor="let appeal of loadedAppeals">
+      <ion-card-content>
+        <ion-text color="dark">
+          <h2><b>Appeal ID: {{ appeal.id }}</b></h2>
+          <p>{{ appeal.date.seconds*1000 | date }}</p>
+        </ion-text>
+        <br>
+        <ion-text color="dark">
+          <h2><b>Name:</b> {{ appeal.strike.worker.name }}</h2>
+          <h2><b>Strike ID:</b> {{ appeal.strike.id }}</h2>
+        </ion-text>
+
+        <ion-img [src]='appeal.strike.detection.frameUrl'></ion-img>
+        <br>
+        <ion-text color="dark">
+          <h3><b>Reason</b></h3>
+          <p>{{ appeal.reason }}</p>
+        </ion-text>
+
+        <br>
+
+        <ion-row class="appeal-buttons">
+          <ion-col size-md="3" offset-md="3" class="ion-padding ion-text-center">
+            <ion-button expand="block" color="success" (click)="onStatusChange(appeal.id, 'approved')">Approve</ion-button>
+          </ion-col>
+
+          <ion-col size-md="3" offset-md="3" class="ion-padding ion-text-center">
+            <ion-button expand="block" color="danger" (click)="onStatusChange(appeal.id, 'rejected')">Reject</ion-button>
+          </ion-col>
+        </ion-row>
+
+      </ion-card-content>
+    </ion-card>
   </ion-list>
+
 </ion-content>

@@ -1,3 +1,16 @@
-ion-img{
-  width:100px;
+ion-card {
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.appeal-buttons ion-col{
+  padding: 0px;
+}
+
+.appeal-buttons ion-col ion-button{
+  font-weight: bold;
+  text-transform: capitalize;
 }
