@@ -6,7 +6,56 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
 
+  <ion-grid class="middle-stats"  *ngIf="!isLoading">
+    <ion-row>
+      <ion-col>
+        <ion-text color="dark">
+          <h3>Today's Statistics</h3>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-card>
+          <ion-card-content>
+            <ion-text color="danger" class="ion-text-center">
+              <p class="stat-number">{{ detectionsToday }}</p>
+              <p>{{ detectionsToday > 1? 'Detections' : 'Detection' }}</p>
+            </ion-text>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="6">
+        <ion-card>
+          <ion-card-content>
+            <ion-text color="success" class="ion-text-center">
+              <p class="stat-number">{{ appealsToday }}</p>
+              <p>{{ appealsToday > 1? 'Appeals' : 'Appeal' }}</p>
+              <p></p>
+            </ion-text>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- CHARTS -->
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <canvas id="detectionChart" #detectionChart></canvas>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <canvas id="appealChart" #appealChart></canvas>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
 
 </ion-content>
