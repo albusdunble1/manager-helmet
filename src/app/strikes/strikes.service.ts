@@ -49,7 +49,15 @@ export class StrikesService {
   // }
 
   updateStrikeStatus(strikeId: string){
-    return this.db.doc('strikes/'+ strikeId).update({status: 'resolved'});
+    return this.db.doc('strikes/'+ strikeId).update({status: 'resolved'})
+    .then(() => {
+      this.db.collection('appeals').ref.where('strike.id', '==', strikeId).get().then((query) => {
+        query.forEach((doc) => {
+          this.db.doc('appeals/'+ doc.id).update({'strike.status': 'resolved'});
+        });
+      });
+    });
+
   }
 
 
