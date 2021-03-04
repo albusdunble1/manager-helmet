@@ -1,9 +1,10 @@
 import { AppealsService } from './../appeals/appeals.service';
 import { Subscription } from 'rxjs';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, NavController } from '@ionic/angular';
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { DetectionsService } from '../detections/detections.service';
 import { Chart } from 'chart.js';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-home',
@@ -31,7 +32,9 @@ export class HomePage implements OnInit, OnDestroy {
   constructor(
     private detectionService: DetectionsService,
     private appealService: AppealsService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private fireAuth: AngularFireAuth,
+    private navCtrl: NavController
   ) {}
 
 
@@ -259,6 +262,12 @@ export class HomePage implements OnInit, OnDestroy {
   //       }
   //   });
   // }
+
+  onLogout(){
+    this.fireAuth.signOut().then(() => {
+      this.navCtrl.navigateBack('/login');
+    });
+  }
 
   ngOnDestroy(){
     if(this.detectionSub){

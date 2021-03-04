@@ -1,9 +1,56 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
+
+<ion-content class="ion-padding">
+  <div class="wrapper">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3" class="ion-text-center">
+          <ion-img src="assets/logo.png"></ion-img>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-md="6" offset-md="3" class="ion-text-center">
+          <ion-text color="dark">
+            <h1>Safety Helmet Wearing Monitoring and Compliance System</h1>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card>
+            <ion-card-content>
+              <ion-text color="dark" class="ion-text-center">
+                <h2>Login</h2>
+              </ion-text>
+
+              <form #f="ngForm" (ngSubmit)="onLogin(f)">
+                <ion-item>
+                  <ion-label position="fixed">
+                    <ion-icon name="person"></ion-icon>
+                    Email
+                  </ion-label>
+                  <ion-input required ngModel type="email" name="email" class="input"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="fixed">
+                    <ion-icon name="lock-closed-outline" ></ion-icon>
+                    Password
+                  </ion-label>
+                  <ion-input required ngModel type="password" name="password" class="input"></ion-input>
+                </ion-item>
+
+                <div class="ion-text-center">
+                  <ion-button fill="outline" color="success" type="submit">Sign In</ion-button>
+                </div>
+              </form>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
 
 </ion-content>

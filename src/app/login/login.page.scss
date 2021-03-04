@@ -1,0 +1,42 @@
+ion-img{
+  width: 180px;
+}
+
+ion-row:nth-of-type(1) ion-col{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form ion-item {
+  margin: 2rem 0;
+}
+
+div {
+  padding: 1rem 0;
+}
+
+h1 {
+  margin: 0 auto;
+  font-weight: bold;
+  font-size: 1.5em;
+  padding-bottom: 1rem;
+}
+
+.card-content-md h2 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+div ion-button {
+  font-weight: bold;
+  font-size: 1.2em;
+  width: 150px;
+}
+
+.wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
