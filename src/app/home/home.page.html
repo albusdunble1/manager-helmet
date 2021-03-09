@@ -15,14 +15,14 @@
 
   <ion-grid class="middle-stats"  *ngIf="!isLoading">
     <ion-row>
-      <ion-col>
+      <ion-col size-md="6" offset-md="3">
         <ion-text color="dark">
           <h3>Today's Statistics</h3>
         </ion-text>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col size="6">
+      <ion-col  size-md="3" offset-md="3">
         <ion-card>
           <ion-card-content>
             <ion-text color="danger" class="ion-text-center">
@@ -33,7 +33,7 @@
         </ion-card>
       </ion-col>
 
-      <ion-col size="6">
+      <ion-col size-md="3">
         <ion-card>
           <ion-card-content>
             <ion-text color="success" class="ion-text-center">
@@ -50,13 +50,13 @@
   <!-- CHARTS -->
   <ion-grid>
     <ion-row>
-      <ion-col>
+      <ion-col size-md="6" offset-md="3">
         <canvas id="detectionChart" #detectionChart></canvas>
       </ion-col>
     </ion-row>
 
     <ion-row>
-      <ion-col>
+      <ion-col size-md="6" offset-md="3">
         <canvas id="appealChart" #appealChart></canvas>
       </ion-col>
     </ion-row>

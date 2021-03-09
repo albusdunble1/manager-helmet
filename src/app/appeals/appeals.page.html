@@ -24,42 +24,48 @@
     </ion-item>
   </ion-list> -->
 
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-list>
+          <ion-card *ngFor="let appeal of loadedAppeals">
+            <ion-card-content>
+              <ion-text color="dark">
+                <h2><b>Appeal ID: {{ appeal.id }}</b></h2>
+                <p>{{ appeal.date.seconds*1000 | date }}</p>
+              </ion-text>
+              <br>
+              <ion-text color="dark">
+                <h2><b>Name:</b> {{ appeal.strike.worker.name }}</h2>
+                <h2><b>Strike ID:</b> {{ appeal.strike.id }}</h2>
+              </ion-text>
 
+              <ion-img [src]='appeal.strike.detection.frameUrl'></ion-img>
+              <br>
+              <ion-text color="dark">
+                <h3><b>Reason</b></h3>
+                <p>{{ appeal.reason }}</p>
+              </ion-text>
 
-  <ion-list>
-    <ion-card *ngFor="let appeal of loadedAppeals">
-      <ion-card-content>
-        <ion-text color="dark">
-          <h2><b>Appeal ID: {{ appeal.id }}</b></h2>
-          <p>{{ appeal.date.seconds*1000 | date }}</p>
-        </ion-text>
-        <br>
-        <ion-text color="dark">
-          <h2><b>Name:</b> {{ appeal.strike.worker.name }}</h2>
-          <h2><b>Strike ID:</b> {{ appeal.strike.id }}</h2>
-        </ion-text>
+              <br>
 
-        <ion-img [src]='appeal.strike.detection.frameUrl'></ion-img>
-        <br>
-        <ion-text color="dark">
-          <h3><b>Reason</b></h3>
-          <p>{{ appeal.reason }}</p>
-        </ion-text>
+              <ion-row class="appeal-buttons">
+                <ion-col class="ion-padding ion-text-center">
+                  <ion-button expand="block" color="success" (click)="onStatusChange(appeal.id, 'approved')">Approve</ion-button>
+                </ion-col>
 
-        <br>
+                <ion-col class="ion-padding ion-text-center">
+                  <ion-button expand="block" color="danger" (click)="onStatusChange(appeal.id, 'rejected')">Reject</ion-button>
+                </ion-col>
+              </ion-row>
 
-        <ion-row class="appeal-buttons">
-          <ion-col size-md="3" offset-md="3" class="ion-padding ion-text-center">
-            <ion-button expand="block" color="success" (click)="onStatusChange(appeal.id, 'approved')">Approve</ion-button>
-          </ion-col>
+            </ion-card-content>
+          </ion-card>
+        </ion-list>
 
-          <ion-col size-md="3" offset-md="3" class="ion-padding ion-text-center">
-            <ion-button expand="block" color="danger" (click)="onStatusChange(appeal.id, 'rejected')">Reject</ion-button>
-          </ion-col>
-        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-      </ion-card-content>
-    </ion-card>
-  </ion-list>
 
 </ion-content>
