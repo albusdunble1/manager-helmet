@@ -21,8 +21,17 @@ export class AppealsService {
     }));
   }
 
-  updateAppealStatus(appealId: string, status: string){
-    return this.db.doc('appeals/'+ appealId).update({status: status});
+  updateAppealStatus(appealId: string, status: string, strikeId: string){
+    if (status == 'rejected'){
+      return this.db.doc('appeals/'+ appealId).update({status: status});
+    } else {
+      return this.db.doc('appeals/'+ appealId).update({status: status, 'strike.status': 'resolved'})
+      .then(() => {
+        this.db.doc('strikes/'+ strikeId).update({'status': 'resolved'});
+      });
+    }
+
+
   }
 
 }

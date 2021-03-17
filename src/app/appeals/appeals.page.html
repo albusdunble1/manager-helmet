@@ -51,11 +51,11 @@
 
               <ion-row class="appeal-buttons">
                 <ion-col class="ion-padding ion-text-center">
-                  <ion-button expand="block" color="success" (click)="onStatusChange(appeal.id, 'approved')">Approve</ion-button>
+                  <ion-button expand="block" color="success" (click)="onStatusChange(appeal.id, 'approved', appeal.strike.id)">Approve</ion-button>
                 </ion-col>
 
                 <ion-col class="ion-padding ion-text-center">
-                  <ion-button expand="block" color="danger" (click)="onStatusChange(appeal.id, 'rejected')">Reject</ion-button>
+                  <ion-button expand="block" color="danger" (click)="onStatusChange(appeal.id, 'rejected', appeal.strike.id)">Reject</ion-button>
                 </ion-col>
               </ion-row>
 

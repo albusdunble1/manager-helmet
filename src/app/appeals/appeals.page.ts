@@ -52,8 +52,8 @@ export class AppealsPage implements OnInit, OnDestroy {
 
   }
 
-  onStatusChange(appealId:string, status: string){
-    this.appealService.updateAppealStatus(appealId, status);
+  onStatusChange(appealId:string, status: string, strikeId: string){
+    this.appealService.updateAppealStatus(appealId, status, strikeId);
   }
 
 
