@@ -1,9 +1,51 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>report-details</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/reports"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Report Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-grid *ngIf="!isLoading">
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-card>
+          <ion-item>
+            <ion-label>
+              <h1>{{ loadedReport?.date.seconds*1000 | date:'MMMM y' }}</h1>
+            </ion-label>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-card>
+          <ion-card-content>
+            <ion-label>
+              <h3 class="heading"><b>Total Detections:</b> {{ loadedReport?.details.detections }}</h3>
+
+              <hr>
+
+              <h3 class="heading"><b>Total Strikes:</b> {{ loadedReport?.details.strikes }}</h3>
+              <h3><b>Active Strikes:</b> {{ loadedReport?.details.activestrikes }}</h3>
+              <h3><b>Resolved Strikes:</b> {{ loadedReport?.details.resolvedstrikes }}</h3>
+
+              <hr>
+
+              <h3 class="heading"><b>Total Appeals:</b> {{ loadedReport?.details.appeals }}</h3>
+              <h3><b>Pending Appeals:</b> {{ loadedReport?.details.pendingappeals }}</h3>
+              <h3><b>Approved Appeals:</b> {{ loadedReport?.details.approvedappeals }}</h3>
+              <h3><b>Rejected Appeals:</b> {{ loadedReport?.details.rejectedappeals }}</h3>
+            </ion-label>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 
 </ion-content>
