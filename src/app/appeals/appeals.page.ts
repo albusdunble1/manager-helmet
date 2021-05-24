@@ -1,5 +1,5 @@
 import { Subscription } from 'rxjs';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { AppealsService } from './appeals.service';
 import { DetectionsService } from './../detections/detections.service';
 import { StrikesService } from './../strikes/strikes.service';
@@ -16,7 +16,8 @@ export class AppealsPage implements OnInit, OnDestroy {
 
   constructor(
     private appealService: AppealsService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private toastCtrl: ToastController
     ) { }
 
   ngOnInit() {
@@ -54,6 +55,23 @@ export class AppealsPage implements OnInit, OnDestroy {
 
   onStatusChange(appealId:string, status: string, strikeId: string){
     this.appealService.updateAppealStatus(appealId, status, strikeId);
+
+
+    if(status == 'approved'){
+      this.toastCtrl.create({
+        message:'Appeal Approved',
+        duration: 2000
+      }).then(toastEl => {
+        toastEl.present();
+      })
+    }else{
+      this.toastCtrl.create({
+        message:'Appeal Rejected',
+        duration: 2000
+      }).then(toastEl => {
+        toastEl.present();
+      })
+    }
   }
 
 

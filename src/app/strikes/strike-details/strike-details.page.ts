@@ -1,7 +1,7 @@
 import { DetectionsService } from './../../detections/detections.service';
 import { StrikesService } from './../strikes.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NavController, ToastController } from '@ionic/angular';
+import { AlertController, NavController, ToastController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -24,7 +24,8 @@ export class StrikeDetailsPage implements OnInit, OnDestroy {
     private strikesService: StrikesService,
     private toastCtrl: ToastController,
     private route: ActivatedRoute,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private alertCtrl: AlertController
   ) { }
 
   ngOnInit() {
@@ -67,14 +68,38 @@ export class StrikeDetailsPage implements OnInit, OnDestroy {
   }
 
   onResolve(id: string){
-    this.toastCtrl.create({
-      message:'Strike Resolved',
-      duration: 2000
-    }).then(toastEl => {
-      this.strikesService.updateStrikeStatus(id).then(() => {
-        toastEl.present();
-      });
-    })
+    this.alertCtrl.create({
+      header: 'Confirm Resolve',
+      message: 'Do you really want to resolve this strike?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Confirm',
+          handler: () => {
+            console.log('Confirm Okay');
+            this.toastCtrl.create({
+              message:'Resolve Successful',
+              duration: 2000
+            }).then(toastEl => {
+              this.strikesService.updateStrikeStatus(id).then(() => {
+                toastEl.present();
+              });
+            })
+          }
+        }
+      ]
+    }).then(alertEl => {
+      alertEl.present();
+    });
+
+
+
   }
 
   ngOnDestroy(){

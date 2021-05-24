@@ -1,7 +1,7 @@
 import { StrikesService } from './../../../strikes/strikes.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { DetectionsService } from '../../detections.service';
 import { NgForm } from '@angular/forms';
 
@@ -22,7 +22,8 @@ export class StrikeFormPage implements OnInit {
     private strikesService: StrikesService,
     private loadingCtrl: LoadingController,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastCtrl: ToastController
   ) { }
 
   ngOnInit() {
@@ -82,8 +83,19 @@ export class StrikeFormPage implements OnInit {
       });
 
       loadingEl.dismiss();
+      this.toastCtrl.create({
+        message:'Strike Successful',
+        duration: 2000
+      }).then(toastEl => {
+        // this.detectionService.removeDetection(id);
+        // this.navCtrl.navigateBack('/tabs/detections');
+        toastEl.present();
+      })
       this.router.navigateByUrl('/tabs/detections');
-    })
+    });
+
+
+
 
   }
 
