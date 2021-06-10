@@ -23,6 +23,8 @@ export class LoginPage implements OnInit {
   }
 
   onLogin(form: NgForm){
+
+
     this.loadingCtrl.create({
       message: 'Logging In...'
     }).then(loadingEl => {
@@ -32,6 +34,7 @@ export class LoginPage implements OnInit {
         console.log(data);
         loadingEl.dismiss();
         if(data.user.uid === 'VxpBkac1aXhrHVzQcQFJg2rEIwi1'){
+          form.reset();
           this.navCtrl.navigateForward('/tabs/home');
         }else{
           this.alertCtrl.create({
@@ -39,6 +42,7 @@ export class LoginPage implements OnInit {
             message: 'Your account does not have the permission to access.',
             buttons: ['Ok']
           }).then(alertEl => {
+            form.reset();
             alertEl.present();
           });
         }
@@ -50,6 +54,7 @@ export class LoginPage implements OnInit {
           message: err,
           buttons: ['Ok']
         }).then(alertEl => {
+          form.reset();
           alertEl.present();
         });
       })
