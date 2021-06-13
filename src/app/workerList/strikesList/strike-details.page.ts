@@ -1,4 +1,4 @@
-import { DetectionsService } from './../../detections/detections.service';
+import { DetectionsService } from './../../detectionList/detections.service';
 import { StrikesService } from './../strikes.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AlertController, NavController, ToastController } from '@ionic/angular';

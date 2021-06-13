@@ -1,4 +1,4 @@
-import { StrikesService } from './../../../strikes/strikes.service';
+import { StrikesService } from './../../../workerList/strikes.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';

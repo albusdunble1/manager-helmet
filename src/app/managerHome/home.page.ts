@@ -2,7 +2,7 @@ import { AppealsService } from '../appealList/appeals.service';
 import { Subscription } from 'rxjs';
 import { LoadingController, NavController } from '@ionic/angular';
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
-import { DetectionsService } from '../detections/detections.service';
+import { DetectionsService } from '../detectionList/detections.service';
 import { Chart } from 'chart.js';
 import { AngularFireAuth } from '@angular/fire/auth';
 

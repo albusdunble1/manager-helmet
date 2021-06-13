@@ -1,8 +1,8 @@
 import { Subscription } from 'rxjs';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { AppealsService } from './appeals.service';
-import { DetectionsService } from '../detections/detections.service';
-import { StrikesService } from '../strikes/strikes.service';
+import { DetectionsService } from '../detectionList/detections.service';
+import { StrikesService } from '../workerList/strikes.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
