@@ -9,23 +9,23 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
+        loadChildren: () => import('../managerHome/home.module').then(m => m.HomePageModule)
       },
       {
         path: 'detections',
-        loadChildren: () => import('../detections/detections.module').then(m => m.DetectionsPageModule)
+        loadChildren: () => import('../detectionList/detections.module').then(m => m.DetectionsPageModule)
       },
       {
         path: 'strikes',
-        loadChildren: () => import('../strikes/strikes.module').then(m => m.StrikesPageModule)
+        loadChildren: () => import('../workerList/strikes.module').then(m => m.StrikesPageModule)
       },
       {
         path: 'appeals',
-        loadChildren: () => import('../appeals/appeals.module').then(m => m.AppealsPageModule)
+        loadChildren: () => import('../appealList/appeals.module').then(m => m.AppealsPageModule)
       },
       {
         path: 'reports',
-        loadChildren: () => import('../reports/reports.module').then(m => m.ReportsPageModule)
+        loadChildren: () => import('../monthlyReports/reports.module').then(m => m.ReportsPageModule)
       },
       {
         path: '',

@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: ':reportId',
-    loadChildren: () => import('./report-details/report-details.module').then( m => m.ReportDetailsPageModule)
+    loadChildren: () => import('./reportDetails/report-details.module').then( m => m.ReportDetailsPageModule)
   }
 ];
 

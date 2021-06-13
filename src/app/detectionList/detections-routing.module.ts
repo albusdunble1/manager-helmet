@@ -9,11 +9,11 @@ const routes: Routes = [
   },
   {
     path: 'newstrike/:detectionId',
-    loadChildren: () => import('./detection-details/strike-form/strike-form.module').then( m => m.StrikeFormPageModule)
+    loadChildren: () => import('./detectionDetails/strikeForm/strike-form.module').then( m => m.StrikeFormPageModule)
   },
   {
     path: ':detectionId',
-    loadChildren: () => import('./detection-details/detection-details.module').then( m => m.DetectionDetailsPageModule)
+    loadChildren: () => import('./detectionDetails/detection-details.module').then( m => m.DetectionDetailsPageModule)
   }
 ];
 

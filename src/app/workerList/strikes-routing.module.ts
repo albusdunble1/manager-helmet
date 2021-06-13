@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: ':workerId',
-    loadChildren: () => import('./strike-details/strike-details.module').then( m => m.StrikeDetailsPageModule)
+    loadChildren: () => import('./strikesList/strike-details.module').then( m => m.StrikeDetailsPageModule)
   }
 ];
 

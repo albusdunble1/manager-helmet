@@ -1,4 +1,4 @@
-import { AppealsService } from './../appeals/appeals.service';
+import { AppealsService } from '../appealList/appeals.service';
 import { Subscription } from 'rxjs';
 import { LoadingController, NavController } from '@ionic/angular';
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
