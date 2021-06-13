@@ -20,6 +20,10 @@ export class DetectionsPage implements OnInit, OnDestroy{
   ) {}
 
   ngOnInit(){
+    this.getDetectionList();
+  }
+
+  getDetectionList(){
     this.loadingCtrl.create({
       message: 'Loading Detections...'
     }).then(loadingEl => {

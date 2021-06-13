@@ -23,6 +23,10 @@ export class DetectionDetailsPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getDetectionDetails();
+  }
+
+  getDetectionDetails(){
     this.route.paramMap.subscribe(paramMap => {
       this.detectionId = paramMap.get('detectionId');
       console.log(this.detectionId);
@@ -32,7 +36,6 @@ export class DetectionDetailsPage implements OnInit {
       })
     });
   }
-
 
   onDelete(id: string){
     this.alertCtrl.create({

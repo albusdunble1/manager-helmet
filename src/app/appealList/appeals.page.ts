@@ -21,6 +21,10 @@ export class AppealsPage implements OnInit, OnDestroy {
     ) { }
 
   ngOnInit() {
+    this.getAppealList();
+  }
+
+  getAppealList(){
     // this.strikeService.getWorkers().subscribe(workers => {
     //   this.loadedWorkers = workers;
     //   console.log(workers);
@@ -49,11 +53,9 @@ export class AppealsPage implements OnInit, OnDestroy {
         loadingEl.dismiss();
       });
     });
-
-
   }
 
-  onStatusChange(appealId:string, status: string, strikeId: string){
+  changeAppealStatus(appealId:string, status: string, strikeId: string){
     this.appealService.updateAppealStatus(appealId, status, strikeId);
 
 

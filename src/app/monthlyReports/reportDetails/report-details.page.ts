@@ -21,6 +21,10 @@ export class ReportDetailsPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getReportDetails();
+  }
+
+  getReportDetails(){
     this.loadingCtrl.create({
       message: 'Loading Report...'
     }).then(loadingEl => {
@@ -41,8 +45,6 @@ export class ReportDetailsPage implements OnInit {
         console.log('hi');
       });
     });
-
-
   }
 
 

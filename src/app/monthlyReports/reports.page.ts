@@ -20,6 +20,10 @@ export class ReportsPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getReportList();
+  }
+
+  getReportList(){
     this.loadingCtrl.create({
       message: 'Loading Reports...'
     }).then(loadingEl => {

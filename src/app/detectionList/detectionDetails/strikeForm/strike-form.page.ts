@@ -41,7 +41,7 @@ export class StrikeFormPage implements OnInit {
     });
   }
 
-  onSubmit(form: NgForm){
+  addStrike(form: NgForm){
     if(!form.valid){
       return;
     }

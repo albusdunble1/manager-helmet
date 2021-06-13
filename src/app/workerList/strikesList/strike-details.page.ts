@@ -29,6 +29,10 @@ export class StrikeDetailsPage implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.getWorkerStrikesList();
+  }
+
+  getWorkerStrikesList(){
     this.route.paramMap.subscribe(paramMap => {
       this.workerId = paramMap.get('workerId');
       console.log(this.workerId);

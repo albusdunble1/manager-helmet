@@ -23,6 +23,10 @@ export class StrikesPage implements OnInit, OnDestroy{
 
 
   ngOnInit(){
+    this.getWorkerList();
+  }
+
+  getWorkerList(){
     this.loadingCtrl.create({
       message: 'Loading Workers...'
     }).then(loadingEl => {
