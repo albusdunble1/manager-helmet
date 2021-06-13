@@ -40,8 +40,12 @@ export class HomePage implements OnInit, OnDestroy {
 
   ngOnInit(){
 
+    this.getDetectionsToday();
 
 
+  }
+
+  getDetectionsToday(){
     this.loadingCtrl.create({
       message: 'Loading...'
     }).then(loadingEl => {
@@ -92,69 +96,75 @@ export class HomePage implements OnInit, OnDestroy {
         console.log('Detections');
         console.log(this.detectionsToday, this.loadedDetections);
 
+
         // =========================Appeal Stats=======================
 
         this.appealSub = this.appealService.getAppeals().subscribe(appeals => {
 
-          // sort appeals by earliest
-          let sortedAppeals = appeals.sort(function(a,b){
-            return a['date'] - b['date'];
-          });
+          this.getAppealsToday(appeals, detectionDateTracker, detectionDateCounter);
 
-          let appealDateTracker = [];
-          let appealDateCounter = [];
-
-          // generate data for appeals chart
-          sortedAppeals.forEach(appeal => {
-            let temp = appeal['date'].toDate().toISOString().split('T')[0];
-            let appealIndex = appealDateTracker.indexOf(temp);
-            if(appealIndex < 0){
-              appealDateTracker.push(temp);
-
-              appealDateCounter.push(1);
-              console.log(temp);
-              console.log('notfound');
-            } else {
-              appealDateCounter[appealIndex] += 1;
-              console.log('found, adding');
-
-            }
-
-            console.log('datetracker', appealDateTracker);
-            console.log('datecounter', appealDateCounter);
-          });
-
-
-
-
-          this.loadedAppeals = appeals.filter(appeal => {
-            let today = new Date().getTime();
-            let appealDate = appeal['date'].toDate().getTime();
-            let diff = Math.floor((today - appealDate) / 1000 / 60 / 60 / 24);
-            console.log(appeal.id, diff);
-            return diff < 1;
-          });
-
-          this.appealsToday = this.loadedAppeals.length;
-          console.log('Appeals');
-          console.log(this.appealsToday, this.loadedAppeals);
-
-          let ddtClone = [...detectionDateTracker];
-          let ddcClone = [...detectionDateCounter];
-          let adtClone = [...appealDateTracker];
-          let adcClone = [...appealDateCounter];
-
-
-          // pass the last 4 values of the arrays into the charts
-          this.createDetectionChart(ddtClone.slice(Math.max(ddtClone.length - 4, 0)), ddcClone.slice(Math.max(ddcClone.length - 4, 0)));
-          this.createAppealChart(adtClone.slice(Math.max(adtClone.length - 4, 0)), adcClone.slice(Math.max(adcClone.length - 4, 0)));
-          console.log('lol');
 
           this.isLoading = false;
           loadingEl.dismiss();
         })
       })
     })
+  }
+
+  getAppealsToday(appeals, detectionDateTracker, detectionDateCounter){
+    // sort appeals by earliest
+    let sortedAppeals = appeals.sort(function(a,b){
+      return a['date'] - b['date'];
+    });
+
+    let appealDateTracker = [];
+    let appealDateCounter = [];
+
+    // generate data for appeals chart
+    sortedAppeals.forEach(appeal => {
+      let temp = appeal['date'].toDate().toISOString().split('T')[0];
+      let appealIndex = appealDateTracker.indexOf(temp);
+      if(appealIndex < 0){
+        appealDateTracker.push(temp);
+
+        appealDateCounter.push(1);
+        console.log(temp);
+        console.log('notfound');
+      } else {
+        appealDateCounter[appealIndex] += 1;
+        console.log('found, adding');
+
+      }
+
+      console.log('datetracker', appealDateTracker);
+      console.log('datecounter', appealDateCounter);
+    });
+
+
+
+
+    this.loadedAppeals = appeals.filter(appeal => {
+      let today = new Date().getTime();
+      let appealDate = appeal['date'].toDate().getTime();
+      let diff = Math.floor((today - appealDate) / 1000 / 60 / 60 / 24);
+      console.log(appeal.id, diff);
+      return diff < 1;
+    });
+
+    this.appealsToday = this.loadedAppeals.length;
+    console.log('Appeals');
+    console.log(this.appealsToday, this.loadedAppeals);
+
+    let ddtClone = [...detectionDateTracker];
+    let ddcClone = [...detectionDateCounter];
+    let adtClone = [...appealDateTracker];
+    let adcClone = [...appealDateCounter];
+
+
+    // pass the last 4 values of the arrays into the charts
+    this.createDetectionChart(ddtClone.slice(Math.max(ddtClone.length - 4, 0)), ddcClone.slice(Math.max(ddcClone.length - 4, 0)));
+    this.createAppealChart(adtClone.slice(Math.max(adtClone.length - 4, 0)), adcClone.slice(Math.max(adcClone.length - 4, 0)));
+    console.log('lol');
   }
 
   ionViewWillEnter(){

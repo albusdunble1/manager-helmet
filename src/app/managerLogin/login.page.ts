@@ -22,7 +22,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  onLogin(form: NgForm){
+  managerLogin(form: NgForm){
 
 
     this.loadingCtrl.create({
